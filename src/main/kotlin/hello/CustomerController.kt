@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class CustomerController @Autowired constructor(val repository:CustomerRepository) {
+class CustomerController @Autowired constructor(val customerService: CustomerService) {
 
 	@RequestMapping("/")
-	fun findAll() = repository.findAll()
+	fun findAll() = customerService.findAll()
 
 	@RequestMapping("/{lastName}")
 	fun findByLastName(@PathVariable lastName:String)
-			= repository.findByLastName(lastName)
+			= customerService.findByLastName(lastName)
 }
